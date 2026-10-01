@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QuizBuilder</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app-shell" id="dashboard-shell">
+  <header class="topbar">
+    <a class="brand" href="user.html">Quiz<span>Builder</span></a>
+    <nav>
+      <button class="tab-link active" data-view="view-browse">Browse quizzes</button>
+      <button class="tab-link" data-view="view-results">My results</button>
+    </nav>
+    <div class="who">
+      <span id="who-name"></span>
+      <button class="btn secondary" id="logout-btn">Log out</button>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- ===================== VIEW: browse ===================== -->
+    <section id="view-browse" class="view active">
+      <h1>Quizzes to try</h1>
+      <p>Pick a quiz below — your score is saved to the leaderboard as soon as you finish.</p>
+      <div id="quiz-list" class="card-grid"></div>
+    </section>
+
+    <!-- ===================== VIEW: results ===================== -->
+    <section id="view-results" class="view">
+      <h1>Your results</h1>
+      <div id="results-body"></div>
+    </section>
+  </main>
+</div>
+
+<!-- ===================== FOCUS MODE: taking a quiz ===================== -->
+<div class="focus-shell" id="focus-shell" style="display:none">
+  <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+  <div class="focus-inner">
+    <div class="q-count" id="q-count"></div>
+    <h2 id="q-text"></h2>
+    <div id="q-answer-area"></div>
+    <div class="focus-nav">
+      <button class="btn secondary" id="quit-quiz-btn">Exit quiz</button>
+      <button class="btn" id="next-btn">Next</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== FOCUS MODE: score screen ===================== -->
+<div class="focus-shell" id="score-shell" style="display:none">
+  <div class="focus-inner">
+    <div class="q-count">Quiz complete</div>
+    <h2 id="score-quiz-title"></h2>
+    <div class="score-ring" id="score-num"></div>
+    <p id="score-detail"></p>
+    <h3 style="margin-top:2rem;text-align:left">Leaderboard</h3>
+    <table class="leaderboard" id="score-leaderboard"></table>
+    <div class="focus-nav" style="justify-content:center;gap:1rem">
+      <button class="btn secondary" id="back-to-dashboard-btn">Back to dashboard</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/data.js"></script>
+<script src="js/user.js"></script>
+</body>
+</html>

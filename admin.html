@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QuizBuilder — Admin</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <header class="topbar">
+    <a class="brand" href="admin.html">Quiz<span>Builder</span> <span style="color:var(--ink-soft);font-weight:600;font-size:0.8em">admin</span></a>
+    <nav>
+      <button class="tab-link active" data-view="view-quizzes">My quizzes</button>
+      <button class="tab-link" data-view="view-builder">Create quiz</button>
+      <button class="tab-link" data-view="view-reports">Reports</button>
+    </nav>
+    <div class="who">
+      <span id="who-name"></span>
+      <button class="btn secondary" id="logout-btn">Log out</button>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- ===================== VIEW: quiz list ===================== -->
+    <section id="view-quizzes" class="view active">
+      <h1>Your quizzes</h1>
+      <p>Every quiz you publish here becomes available to signed-in users right away.</p>
+      <div id="quiz-list" class="card-grid"></div>
+    </section>
+
+    <!-- ===================== VIEW: builder ===================== -->
+    <section id="view-builder" class="view">
+      <h1 id="builder-heading">Create a quiz</h1>
+      <p>Add as many questions as you need, mix question types, and decide whether the order should shuffle for each attempt.</p>
+
+      <input type="hidden" id="q-edit-id">
+
+      <div class="grid-2">
+        <div>
+          <label for="q-title">Quiz title</label>
+          <input type="text" id="q-title" placeholder="e.g. Cell Biology Basics">
+        </div>
+        <div>
+          <label for="q-category">Category</label>
+          <input type="text" id="q-category" placeholder="e.g. Biology">
+        </div>
+      </div>
+
+      <label for="q-description">Description</label>
+      <textarea id="q-description" placeholder="What is this quiz about?"></textarea>
+
+      <div class="grid-2">
+        <div>
+          <label for="q-difficulty">Difficulty</label>
+          <select id="q-difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium" selected>Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </div>
+        <div>
+          <label for="q-randomize">Question order</label>
+          <select id="q-randomize">
+            <option value="false">Fixed order</option>
+            <option value="true">Randomize for each attempt</option>
+          </select>
+        </div>
+      </div>
+
+      <h2 style="margin-top:2rem">Questions</h2>
+      <div id="question-list"></div>
+
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap;margin:1rem 0 2rem">
+        <button class="btn secondary" id="add-mcq">+ Multiple choice</button>
+        <button class="btn secondary" id="add-tf">+ True / False</button>
+        <button class="btn secondary" id="add-open">+ Open-ended</button>
+      </div>
+
+      <div class="field-error" id="builder-error"></div>
+
+      <div style="display:flex;gap:0.6rem">
+        <button class="btn" id="save-quiz-btn">Publish quiz</button>
+        <button class="btn secondary" id="cancel-edit-btn" style="display:none">Cancel edit</button>
+      </div>
+    </section>
+
+    <!-- ===================== VIEW: reports ===================== -->
+    <section id="view-reports" class="view">
+      <h1>Reports</h1>
+      <p>Pick a quiz to see who has taken it and how they scored.</p>
+      <label for="report-select">Quiz</label>
+      <select id="report-select"></select>
+      <div id="report-body" style="margin-top:1.5rem"></div>
+    </section>
+
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/data.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

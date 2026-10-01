@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QuizBuilder — Sign in</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="center-shell">
+  <div class="auth-card">
+    <h1>Quiz<span style="color:var(--primary)">Builder</span></h1>
+    <p id="tagline">Sign in to build, share, and take quizzes.</p>
+
+    <div class="tab-link active" id="tab-login" style="display:inline-block;margin-right:0.4rem;background:var(--paper)">Log in</div>
+    <div class="tab-link" id="tab-signup" style="display:inline-block">Sign up</div>
+
+    <!-- ===== Log in form ===== -->
+    <form id="login-form">
+      <label for="login-username">Username</label>
+      <input type="text" id="login-username" autocomplete="username" required>
+
+      <label for="login-password">Password</label>
+      <input type="password" id="login-password" autocomplete="current-password" required>
+
+      <div class="field-error" id="login-error"></div>
+
+      <button type="submit" class="btn block" style="margin-top:1.4rem">Log in</button>
+      <p class="helper" style="text-align:center;margin-top:1rem">Demo admin — username <code>admin</code>, password <code>admin123</code></p>
+    </form>
+
+    <!-- ===== Sign up form ===== -->
+    <form id="signup-form" style="display:none">
+      <label for="signup-name">Full name</label>
+      <input type="text" id="signup-name" required>
+
+      <label for="signup-username">Choose a username</label>
+      <input type="text" id="signup-username" autocomplete="username" required>
+
+      <label for="signup-password">Choose a password</label>
+      <input type="password" id="signup-password" autocomplete="new-password" required minlength="4">
+
+      <div class="field-error" id="signup-error"></div>
+
+      <button type="submit" class="btn block" style="margin-top:1.4rem">Create account</button>
+      <p class="helper" style="text-align:center;margin-top:1rem">New accounts join as quiz takers.</p>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/data.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>
